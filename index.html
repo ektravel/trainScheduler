@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" integrity="sha384-p2jx59pefphTFIpeqCcISO9MdVfIm4pNnsL08A6v5vaQc4owkQqxMV8kg4Yvhaw/"
         crossorigin="anonymous">
     <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
@@ -24,44 +25,46 @@
         </div>
 
         <div class="row">
-            <div class "panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Current Florence Santa Maria Novella Train Schedule </h3>
+            <div class="col-md-12">
+                <div class = "card">
+                    <div class="card-header">
+                        <h3 class="card-title">Current Florence Santa Maria Novella Train Schedule </h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover" id="train-table">
+                            <tread>
+                                <tr>
+                                    <th>Train Name</th>
+                                    <th>Destination</th>
+                                    <th>Frequency</th>
+                                    <th>Next Arrival</th>
+                                    <th>Minutes Away</th>
+                                </tr>
+                            </tread>
+                            <tbody></tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <table class="table table-hover" id="train-table">
-                        <tread>
-                            <tr>
-                                <th>Train Name</th>
-                                <th>Destination</th>
-                                <th>Frequency</th>
-                                <th>Next Arrival</th>
-                                <th>Minutes Away</th>
-                            </tr>
-                        </tread>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
 
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Add Train</h3>
-                </div>
-                <div class="panel-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="train-name-input">Train Name</label>
-                            <input type="text" class="form-control" id="train-name-input">
-                            <label for="destination-input">Destination</label>
-                            <input type="text" class="form-control" id="first-train-input">
-                            <label for="first-train-input">First Train Time (HH:mm - military time</label>
-                            <input type="text" class="form-control" id="first-train-input">
-                            <label for="frequency-input">Frequency (min)</label>
-                            <input type="text" class="form-control" id="frequency-input">
-                        </div>
-                        <button class="btn btn-primary btn-lg fas fa-train" id = "add-train-btn" type="submit"></button>                   
-                    </form>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Add Train</h3>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="train-name-input">Train Name</label>
+                                <input type="text" class="form-control" id="train-name-input">
+                                <label for="destination-input">Destination</label>
+                                <input type="text" class="form-control" id="first-train-input">
+                                <label for="first-train-input">First Train Time (HH:mm - military time)</label>
+                                <input type="text" class="form-control" id="first-train-input">
+                                <label for="frequency-input">Frequency (min)</label>
+                                <input type="text" class="form-control" id="frequency-input">
+                            </div>
+                            <button class="btn btn-primary btn-lg fas fa-train" id="add-train-btn" type="submit"></button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
