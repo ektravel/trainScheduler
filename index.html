@@ -12,6 +12,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
@@ -41,7 +42,7 @@
                                     <th>Minutes Away</th>
                                 </tr>
                             </tread>
-                            <tbody></tbody>
+                            <tbody id = "mainTable"></tbody>
                         </table>
                     </div>
                 </div>
@@ -55,12 +56,12 @@
                             <div class="form-group">
                                 <label for="train-name-input">Train Name</label>
                                 <input type="text" class="form-control" id="train-name-input">
-                                <label for="destination-input">Destination</label>
-                                <input type="text" class="form-control" id="first-train-input">
-                                <label for="first-train-input">First Train Time (HH:mm - military time)</label>
-                                <input type="text" class="form-control" id="first-train-input">
-                                <label for="frequency-input">Frequency (min)</label>
-                                <input type="text" class="form-control" id="frequency-input">
+                                <label for="train-destination-input">Destination</label>
+                                <input type="text" class="form-control" id="train-destination-input">
+                                <label for="train-start-input">First Train Time (HH:mm - military time)</label>
+                                <input type="text" class="form-control" id="train-start-input">
+                                <label for="train-frequency-input">Frequency (min)</label>
+                                <input type="text" class="form-control" id="train-frequency-input">
                             </div>
                             <button class="btn btn-primary btn-lg fas fa-train" id="add-train-btn" type="submit"></button>
                         </form>

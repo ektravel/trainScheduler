@@ -16,3 +16,6 @@ body {
 #add-train-btn {
     border: 1px solid  rgb(32, 95, 35);
 }
+th {
+    font-weight: bold;
+}
