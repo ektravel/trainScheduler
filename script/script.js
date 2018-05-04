@@ -4,23 +4,27 @@
     authDomain: "trainscheduler-65199.firebaseapp.com",
     databaseURL: "https://trainscheduler-65199.firebaseio.com",
     projectId: "trainscheduler-65199",
-    storageBucket: "",
+    storageBucket: "trainscheduler-65199.appspot.com",
     messagingSenderId: "140767438022"
   };
   firebase.initializeApp(config);
 
   var database = firebase.database();
   var trainFrequency; 
+  var userStartTime;
 
     //Button for adding trains
   $("#add-train-btn").on("click", function (event) {
     event.preventDefault();
 
+    userStartTime = $("#train-start-input").val().trim();
+
+
     //Record user input
     var trainName = $("#train-name-input").val().trim();
     var trainDestination = $("#train-destination-input").val().trim();
-    var trainStartTime = moment($("#train-start-input").val().trim(),"HH:mm").format("X");
-    var trainFrequency = $("#train-frequency-input").val().trim();
+    var trainStartTime = moment(userStartTime,"HH:mm").format("X");
+    trainFrequency = $("#train-frequency-input").val().trim();
 
     //Upload train data to database
     database.ref().push({
@@ -29,10 +33,11 @@
         start: trainStartTime,
         frequency: trainFrequency
     });
-    console.log(trainName.name);
-    console.log(trainDestination.destination);
-    console.log(trainStartTime.start);
-    console.log(trainFrequency.frequency);
+
+    console.log(trainName);
+    console.log(trainDestination);
+    console.log(trainStartTime);
+    console.log(trainFrequency);
 
     //Clear the intake form
     $("#train-name-input").val("");
@@ -43,26 +48,27 @@
   });
 
   //Create a database event for adding trains
-  database.ref().on("child_added", function(childSnapshot){
-    console.log(childSnapshot.val());
+  database.ref().on("child_added", function(childSnapshot, prevChildKey){
     
     //Change start time from military time to AM/PM
-    var startTimeAmPm = moment($("#train-start-input").val().trim(),"HH:mm").format("hh:mm A");
+    var startTimeAmPm = moment(childSnapshot.val().start,"X");
 
     //Difference between current time and train start time
     var timeDifference = moment().diff(moment(startTimeAmPm), "minutes");
 
     //Time remaining
-    var timeRemaining = timeDifference % trainFrequency;
-
-    //Calculate Next Arrival
-    var nextArrival = moment().add(timeRemaining, "minutes");
+    var timePassed =  timeDifference % childSnapshot.val().frequency;
 
     //Calculate Minutes Away
-    var minutesAway = trainFrequency - timeRemaining;
+    var minutesAway = childSnapshot.val().frequency - timePassed;
+
+    //Calculate Next Arrival
+    var nextArrival = moment().add(minutesAway, "minutes").format("hh:mm A");
+
+    
 
     //Add train's data to the timetable 
-    $("#maintable").append("<tr><td>" + (childSnapshot.val().name) + "<tr><td>" + (childSnapshot.val().destination) + "<tr><td>" + (childSnapshot.val().frequency) + "<tr><td>" + nextArrival + "<tr><td>" + minutesAway + "<tr><td>");
+    $("#mainTable").append("<tr><td>" + (childSnapshot.val().name) + "</td><td>" + (childSnapshot.val().destination) + "</td><td>" + (childSnapshot.val().frequency) + "</td><td>" + nextArrival + "</td><td>" + minutesAway + "</td><td>");
 
 
   });
