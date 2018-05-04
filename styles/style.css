@@ -1,5 +1,6 @@
 #add-train-btn {
     background-color: rgb(32, 95, 35);
+    border: 1px solid  rgb(32, 95, 35);
 } 
 .card-header {
     background-color: rgb(151, 29, 29);
@@ -13,9 +14,7 @@
 body {
     font-family: 'IBM Plex Sans', sans-serif;
 }
-#add-train-btn {
-    border: 1px solid  rgb(32, 95, 35);
-}
+
 th {
     font-weight: bold;
 }

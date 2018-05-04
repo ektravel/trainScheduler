@@ -65,16 +65,6 @@
     //Calculate Next Arrival
     var nextArrival = moment().add(minutesAway, "minutes").format("hh:mm A");
 
-    
-
     //Add train's data to the timetable 
     $("#mainTable").append("<tr><td>" + (childSnapshot.val().name) + "</td><td>" + (childSnapshot.val().destination) + "</td><td>" + (childSnapshot.val().frequency) + "</td><td>" + nextArrival + "</td><td>" + minutesAway + "</td><td>");
-
-
   });
-
-
-  //var now = moment(); - records current date and time
-  //To change from military time to AM/PM
-  //console.log(moment("13:00", 'HH:mm').format('hh:mm a'));
-  //moment("02:00 PM", "h:mm A").format("HH:mm")
